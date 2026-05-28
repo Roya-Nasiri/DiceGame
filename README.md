@@ -1,5 +1,6 @@
 # DiceGame
-Demo : 
+Demo : https://roya-nasiri.github.io/DiceGame/
+
 # 🎲 3D Dice Game
 
 A simple and interactive 3D Dice Game built with HTML, CSS, and JavaScript.
@@ -41,4 +42,5 @@ project/
 
 ## 👩‍💻 Author
 
-Roya Nasiri
+Roya Nasiri 2026/05/28
+How to reach me : with my linkedin (https://www.linkedin.com/in/roya-nasiri-81466123a)
