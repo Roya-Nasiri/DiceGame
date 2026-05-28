@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <div class="main">
+      <button class="reset">reset</button>
+      <div class="right">
+        <button class="rot">Player 1</button>
+
+        <div class="box">
+          <!-- 1 -->
+          <div class="face one">
+            <span class="dot center"></span>
+          </div>
+
+          <!-- 2 -->
+          <div class="face two">
+            <span class="dot top-left"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+
+          <!-- 3 -->
+          <div class="face three">
+            <span class="dot top-left"></span>
+            <span class="dot center"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+
+          <!-- 4 -->
+          <div class="face four">
+            <span class="dot top-left"></span>
+            <span class="dot top-right"></span>
+            <span class="dot bottom-left"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+
+          <!-- 5 -->
+          <div class="face five">
+            <span class="dot top-left"></span>
+            <span class="dot top-right"></span>
+            <span class="dot center"></span>
+            <span class="dot bottom-left"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+
+          <!-- 6 -->
+          <div class="face six">
+            <span class="dot top-left"></span>
+            <span class="dot middle-left"></span>
+            <span class="dot bottom-left"></span>
+            <span class="dot top-right"></span>
+            <span class="dot middle-right"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="left">
+        <button class="rott">Player 2</button>
+
+        <div class="box">
+          <!-- 1 -->
+          <div class="face one">
+            <span class="dot center"></span>
+          </div>
+
+          <!-- 2 -->
+          <div class="face two">
+            <span class="dot top-left"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+
+          <!-- 3 -->
+          <div class="face three">
+            <span class="dot top-left"></span>
+            <span class="dot center"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+
+          <!-- 4 -->
+          <div class="face four">
+            <span class="dot top-left"></span>
+            <span class="dot top-right"></span>
+            <span class="dot bottom-left"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+
+          <!-- 5 -->
+          <div class="face five">
+            <span class="dot top-left"></span>
+            <span class="dot top-right"></span>
+            <span class="dot center"></span>
+            <span class="dot bottom-left"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+
+          <!-- 6 -->
+          <div class="face six">
+            <span class="dot top-left"></span>
+            <span class="dot middle-left"></span>
+            <span class="dot bottom-left"></span>
+            <span class="dot top-right"></span>
+            <span class="dot middle-right"></span>
+            <span class="dot bottom-right"></span>
+          </div>
+        </div>
+        <!-- <span class="showleft">...</span> -->
+      </div>
+      <span class="showright"></span>
+    </div>
+    /////////////
+    <div class="myName">
+      <img src="./img/b84acdc0-37db-4890-af40-c756eb6673fe.jpg" alt="" />
+      <span>RoyaNasiri</span>
+      <i
+        ><a href="https://www.linkedin.com/in/roya-nasiri-81466123a">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="#0A66C2"
+          >
+            <path
+              d="M20.447 20.452H16.89V14.87c0-1.331-.027-3.045-1.856-3.045-1.857 0-2.142 1.45-2.142 2.948v5.679H9.336V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.063 2.063 0 1 1 0-4.126 2.063 2.063 0 0 1 0 4.126zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+            />
+          </svg>
+        </a>
+      </i>
+    </div>
+    ////////////
+    <script>
+      let buttons = document.querySelectorAll('.rot, .rott');
+      let boxes = document.querySelectorAll('.box');
+      let show = document.querySelector('.showright');
+      let reset = document.querySelector('.reset');
+      let _ul = document.createElement('ul');
+      let score1 = 0;
+      let score2 = 0;
+      let round = 0;
+
+      let result1 = 0;
+      let result2 = 0;
+      let turn = 0;
+      /////disable////////
+      function checkTurn() {
+        buttons[0].disabled = turn !== 0;
+        buttons[1].disabled = turn !== 1;
+      }
+      reset.disabled = true;
+      buttons.forEach((btn, i) => {
+        let box = boxes[i];
+        let currentX = 0;
+        let currentY = 0;
+
+        btn.addEventListener('click', () => {
+          let num = Math.floor(Math.random() * 6) + 1;
+          // نمایش عدد هر کلیک
+          setTimeout(() => {
+            btn.disabled = true;
+
+            document.querySelector('.main').appendChild(_ul);
+
+            show.innerText = num;
+
+            if (i == 0) {
+              result1 = num;
+              turn = 1;
+              checkTurn();
+            } else {
+              result2 = num;
+
+              if (result1 > result2) {
+                score1++;
+              } else if (result2 > result1) {
+                score2++;
+              }
+
+              round++;
+
+              // ریست بازی
+              setTimeout(() => {
+                // بعد از 3 دور
+                if (round == 3) {
+                  reset.disabled = false;
+                  buttons[0].disabled = true;
+                  buttons[1].disabled = true;
+                  let _li = document.createElement('li');
+                  if (score1 > score2) {
+                    _li.innerText = 'PLAYER 1 WIN 🏆';
+                  } else if (score2 > score1) {
+                    _li.innerText = 'PLAYER 2 WIN 🏆';
+                  } else {
+                    _li.innerText = 'DRAW';
+                  }
+
+                  _ul.appendChild(_li);
+                  // ریست کامل////
+                  round = 0;
+                  score1 = 0;
+                  score2 = 0;
+                }
+              }, 800);
+              turn = 0;
+              checkTurn();
+            }
+          }, 1000);
+
+          let extraSpin = 360 * 2;
+
+          let targetX = 0;
+          let targetY = 0;
+
+          switch (num) {
+            case 1:
+              targetX = 0;
+              targetY = 0;
+              break;
+            case 2:
+              targetY = 180;
+              break;
+            case 3:
+              targetY = -90;
+              break;
+            case 4:
+              targetY = 90;
+              break;
+            case 5:
+              targetX = -90;
+              break;
+            case 6:
+              targetX = 90;
+              break;
+          }
+
+          // فقط دور کامل رو اضافه می‌کنیم
+          currentX = Math.floor(currentX / 360) * 360 + extraSpin + targetX;
+          currentY = Math.floor(currentY / 360) * 360 + extraSpin + targetY;
+
+          box.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+        });
+      });
+      /////////reset////////
+
+      reset.addEventListener('click', () => {
+        reset.disabled = true;
+
+        result1 = 0;
+        result2 = 0;
+
+        score1 = 0;
+        score2 = 0;
+
+        round = 0;
+        turn = 0;
+
+        show.innerText = '';
+        _ul.innerHTML = '';
+
+        checkTurn();
+
+        boxes.forEach((box) => {
+          box.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+      });
+    </script>
+  </body>
+</html>
