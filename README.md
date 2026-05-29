@@ -33,7 +33,6 @@ A simple and interactive 3D Dice Game built with HTML, CSS, and JavaScript.
 
 ```bash
 project/
-│
 ├── index.html
 ├── css/
 │   └── style.css
