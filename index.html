@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="main">
@@ -113,7 +113,7 @@
       </div>
       <span class="showright"></span>
     </div>
-
+    /////////////
     <div class="myName">
       <img src="./img/b84acdc0-37db-4890-af40-c756eb6673fe.jpg" alt="" />
       <span>RoyaNasiri</span>
@@ -133,21 +133,20 @@
         </a>
       </i>
     </div>
-   
+    ////////////
     <script>
       let buttons = document.querySelectorAll('.rot, .rott');
       let boxes = document.querySelectorAll('.box');
       let show = document.querySelector('.showright');
-
-boxes.forEach((box) => {
-  box.style.transform = 'rotateX(90deg) rotateY(0deg)';
-});
-
       let reset = document.querySelector('.reset');
       let _ul = document.createElement('ul');
       let score1 = 0;
       let score2 = 0;
       let round = 0;
+
+      boxes.forEach((box) => {
+        box.style.transform = `rotateX(180deg)`;
+      });
 
       let result1 = 0;
       let result2 = 0;
@@ -162,7 +161,7 @@ boxes.forEach((box) => {
         let box = boxes[i];
         let currentX = 0;
         let currentY = 0;
-
+        show.innerText = `P1: 0 | P2: 0`;
         btn.addEventListener('click', () => {
           let num = Math.floor(Math.random() * 6) + 1;
           // نمایش عدد هر کلیک
@@ -170,8 +169,6 @@ boxes.forEach((box) => {
             btn.disabled = true;
 
             document.querySelector('.main').appendChild(_ul);
-
-            show.innerText = num;
 
             if (i == 0) {
               result1 = num;
@@ -185,6 +182,7 @@ boxes.forEach((box) => {
               } else if (result2 > result1) {
                 score2++;
               }
+              show.innerText = `P1: ${score1} | P2: ${score2}`;
 
               round++;
 
@@ -264,15 +262,14 @@ boxes.forEach((box) => {
         round = 0;
         turn = 0;
 
-        show.innerText = '';
+        show.innerText = `P1: 0 | P2: 0`;
         _ul.innerHTML = '';
 
         checkTurn();
 
         boxes.forEach((box) => {
-        box.style.transform = 'rotateX(90deg)                rotateY(0deg)';
-      });
-
+           box.style.transform = `rotateX(180deg)`;
+        });
       });
     </script>
   </body>
